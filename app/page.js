@@ -53,11 +53,18 @@ export default function home() {
 
   return(
     <>
-      <canvas ref={canvaRef} onMouseDown={() => setFirstStroke(true)}></canvas>
-      <button onClick={() => {setFirstStroke(false)}}>RESTART</button>
-      <button onClick={() => {setEraser(prev => !prev)}}>BORRADOR</button>
-      <h1>Posicion: {mousePos.x}</h1>
-      <h1>Estado: {holding}</h1>
+      <canvas ref={canvaRef} onMouseDown={() => setFirstStroke(true)} className="absolute"></canvas>
+      <div className="table h-full w-full">
+        <div className="table-cell align-middle">
+          <div className="w-24 h-96 mx-10 bg-white border border-black rounded-md shadow-xl relative">
+            <div className="flex flex-col items-center my-5 gap-12">
+              <button onClick={() => setEraser(false)} className="w-10 h-10"><img src="brush.svg"></img></button>
+              <button onClick={() => setEraser(true)} className="w-10 h-10"><img src="eraser.svg"></img></button>
+              <button onClick={() => setFirstStroke(false)} className="w-10 h-10"><img src="clean.svg"></img></button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
